@@ -8,7 +8,15 @@ service CatalogService @(path: '/catalogextend'){
         skip : false
     }
     @cds.autoexpose
-    entity Employees as projection on external.Employees {
+    entity Employees @(restrict : [
+           {   
+                production: {
+                grant : [ '*' ],
+                to : [ 'NorthwindEmpl' ]   
+               }
+           }
+    ])
+     as projection on external.Employees {
        key EmployeeID, 
            FirstName, 
            LastName, 

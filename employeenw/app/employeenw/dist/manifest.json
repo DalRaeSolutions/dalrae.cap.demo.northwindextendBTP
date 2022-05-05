@@ -156,6 +156,6 @@
     },
     "sap.cloud": {
         "public": true,
-        "service": "ns.employeenw"
+        "service": "employeenw"
     }
 }

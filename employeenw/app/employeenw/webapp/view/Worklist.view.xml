@@ -52,7 +52,7 @@
                     </OverflowToolbar>
                 </headerToolbar>
 
-                <columns>
+                <columns >
                     <Column id="nameColumn">
                         <Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
                     </Column>
@@ -62,8 +62,8 @@
                       <Column id="FirstNameColumn">
                         <Text text="First Name" id="FirstNameTitle"/>
                     </Column>
-                    <Column id="MiddleNameColumn">
-                        <Text text="Middle Name" id="MiddleNameColumnTitle"/>
+                    <Column id="MiddleNameColumn" >
+                        <Text text="Middle Name" id="MiddleNameColumnTitle" class="custCol"/>
                     </Column>
                     <Column id="LastNameColumn">
                         <Text text="Last Name" id="LastNameColumnTitle"/>
@@ -79,7 +79,7 @@
                                 title="{EmployeeID}"/>
                                 <Text text="{Title}"/>
                                 <Text text="{FirstName}"/>
-                                <Text text="{MiddleName}"/>
+                                <Text text="{MiddleName}" class="custCol"/>
                                 <Text text="{LastName}"/>
                             <ObjectNumber />
                         </cells>

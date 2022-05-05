@@ -13,6 +13,7 @@
         "passport": "^0.5.2"
     },
     "devDependencies": {
+        "@sap/ux-specification": "^1.100.0",
         "sqlite3": "^5.0.2"
     },
     "engines": {

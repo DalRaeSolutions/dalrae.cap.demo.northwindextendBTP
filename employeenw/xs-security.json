@@ -1,5 +1,19 @@
 {
-  "scopes": [],
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.NorthwindEmpl",
+      "description": "Manage Employees"
+    }
+  ],
   "attributes": [],
-  "role-templates": []
+  "role-templates": [
+    {
+      "name": "NorthwindEmpl",
+      "description": "Manage Employees",
+      "scope-references": [
+        "$XSAPPNAME.NorthwindEmpl"
+      ],
+      "attribute-references": []
+    }
+  ]
 }

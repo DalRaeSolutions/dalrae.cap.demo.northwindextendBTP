@@ -29,7 +29,7 @@
         <semantic:content>
             <l:VerticalLayout>
                 <ObjectStatus title="Employee ID" text="{EmployeeID}" /> 
-                <ObjectStatus title="PhoneNumber" text="{PhoneNumber}"/>
+                <ObjectStatus title="PhoneNumber" text="{PhoneNumber}" class="custCol"/>
                 <ObjectStatus title="Base City" text="{BaseCity}"/>
             </l:VerticalLayout>
         </semantic:content>

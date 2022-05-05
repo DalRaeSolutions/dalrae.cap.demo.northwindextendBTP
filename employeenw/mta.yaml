@@ -1,7 +1,7 @@
 _schema-version: "3.1"
 ID: employeenw
 description: A simple CAP project.
-version: 1.0.0
+version: 2.0.0
 modules:
 - name: employeenw-srv
   type: nodejs
@@ -22,6 +22,7 @@ modules:
   path: gen/db
   requires:
   - name: employeenw-db
+  - name: employeenw-uaa
   parameters:
     buildpack: nodejs_buildpack
 - name: employeenw-app-content
@@ -51,18 +52,18 @@ modules:
 - name: employeenw-destination-content
   type: com.sap.application.content
   requires:
-  - name: employeenw-destination-service
-    parameters:
-      content-target: true
-  - name: srv-api
-  - name: employeenw-repo-host
-    parameters:
-      service-key:
-        name: employeenw-repo-host-key
   - name: employeenw-uaa
     parameters:
       service-key:
         name: employeenw-uaa-key
+  - name: employeenw-repo-host
+    parameters:
+      service-key:
+        name: employeenw-repo-host-key
+  - name: srv-api
+  - name: employeenw-destination-service
+    parameters:
+      content-target: true
   parameters:
     content:
       instance:
@@ -74,7 +75,7 @@ modules:
           URL: ~{srv-api/srv-url}
           sap.cloud.service: employeenw
         - Name: employeenw-repo-host
-          ServiceInstanceName: employeenw-html5-srv
+          ServiceInstanceName: employeenw-repo-host
           ServiceKeyName: employeenw-repo-host-key
           sap.cloud.service: employeenw
         - Authentication: OAuth2UserTokenExchange
@@ -97,7 +98,6 @@ resources:
   type: org.cloudfoundry.managed-service
   parameters:
     service: html5-apps-repo
-    service-name: employeenw-html5-srv
     service-plan: app-host
 - name: employeenw-destination-service
   type: org.cloudfoundry.managed-service
@@ -121,6 +121,11 @@ resources:
   type: org.cloudfoundry.managed-service
   parameters:
     config:
+      role-collections:
+      - description: Manage Employees
+        name: NorthwindEmpl-${space}
+        role-template-references:
+        - $XSAPPNAME.NorthwindEmpl
       tenant-mode: dedicated
       xsappname: employeenw-${org}-${space}
     path: ./xs-security.json

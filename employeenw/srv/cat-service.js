@@ -40,7 +40,7 @@ let results = await service.tx(req).send({
     
 })
 const employeesWithExtension = await Promise.all(getExtensionData)
-//console.log(employeesWithExtension)
+
   return employeesWithExtension
 
   })
